@@ -35,7 +35,7 @@ Citizen.CreateThread(function()
         ESX.TriggerServerCallback('kov_cinematic:getDateName', function(statu)
             local count = #Config.Cinematics[i].Subtitle.Talk
             Config.Cinematics[i].state = tonumber(statu)
-            if count =< Config.Cinematics[i].state then
+            if count <= Config.Cinematics[i].state then
                 Config.Cinematics[i].state = count
             end
         end, Config.Cinematics[i].name)
