@@ -268,8 +268,30 @@ AddEventHandler('kov_cinematic:AddChat', function(i, text, name)
             multiline = true,
             args =  {name , ': '.. text .. ' ' }
         })
+        --[[
+        local timer = GetGameTimer() + 9000
+        while timer >= GetGameTimer() do
+            drawText(text)
+            Wait(0)
+        end
+        ]]
     end
 end)
+
+drawText = function(text)
+	SetTextFont(4)
+	SetTextProportional(0)
+	SetTextScale(0.5, 0.5)
+	SetTextColour(255, 255, 255, 255)
+	SetTextDropShadow(0, 0, 0, 0,255)
+	SetTextEdge(1, 0, 0, 0, 255)
+	SetTextDropShadow()
+	SetTextOutline()
+	SetTextCentre(1)
+	SetTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawText(0.5, 0.95)
+end
 
 RegisterNetEvent("kov_cinematic:addChatCl")
 AddEventHandler("kov_cinematic:addChatCl", function(i, text, name)
