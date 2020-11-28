@@ -33,7 +33,11 @@ Citizen.CreateThread(function()
         TriggerServerEvent('kov_cinematic:checkPedPoint', Config.Cinematics[i].name)
         Citizen.Wait(100)
         ESX.TriggerServerCallback('kov_cinematic:getDateName', function(statu)
+            local count = #Config.Cinematics[i].Subtitle.Talk
             Config.Cinematics[i].state = tonumber(statu)
+            if count =< Config.Cinematics[i].state then
+                Config.Cinematics[i].state = count
+            end
         end, Config.Cinematics[i].name)
         ESX.TriggerServerCallback('kov_cinematic:getPlayerPoint', function(result)
             if Config.Relationships.good <= tonumber(result) then
